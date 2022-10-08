@@ -30,6 +30,47 @@ function showModal() {
 
 hireMeBtn.addEventListener('click', showModal);
 
+// const winterBtn = document.querySelector('.btn-Winter');
+const portfolioImages = document.querySelectorAll('.portfolio-image');
+const portfolioBtn = document.querySelector('.portfolio-btns');
+const portfolioBtnArray = document.querySelectorAll('.portfolio-btn');
+
+function changeImages(event) {
+    if (event.target.classList.contains('portfolio-btn')) {
+        portfolioImages.forEach((image, index) => {
+            image.src = `assets/images/${event.target.dataset.season}/${index + 1}.jpg`
+        });
+        event.target.classList.remove('btn-dark');
+    }
+}
+
+
+portfolioBtnArray.forEach((button) => {
+    button.addEventListener('click', () => {
+        portfolioBtnArray.forEach((btn) => btn.classList.add('btn-dark'));
+        button.classList.remove('btn-dark');
+    })
+})
+
+portfolioBtn.addEventListener('click', changeImages);
+
+
+const themeBtn = document.querySelector('.theme-button');
+
+function changeTheme() {
+    const sections = document.querySelectorAll('.skills, .portfolio, .video, .price');
+    const sectionTitle = document.querySelectorAll('.section-title');
+    const sectionHeader = document.querySelectorAll('.section-header');
+
+    sections.forEach((section) => section.classList.toggle('light-theme'));
+    sectionTitle.forEach((title) => title.classList.toggle('light-theme'));
+    sectionHeader.forEach((header) => header.classList.toggle('light-theme'));
+}
+
+themeBtn.addEventListener('click', changeTheme);
+
+
+
 
 function closeModal() {
     modal.classList.remove('open');

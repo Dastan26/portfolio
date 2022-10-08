@@ -74,7 +74,7 @@ section {
 }
 
 .btn-dark {
-    background: var(--body-color);
+    background: transparent;
     border: 2px solid var(--main-color);
     color: var(--main-color);
 }
@@ -128,6 +128,31 @@ section {
 
 .language {
     margin-left: 8px;
+}
+
+.theme-button {
+    width: 45px;
+    height: 45px;
+    margin-left: 30px;
+    transition: 0.3s;
+    background: url(..//assets/icons/theme.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.theme-button.active {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.theme-button:hover {
+    cursor: pointer;
+
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.light-theme {
+    background-color: #fff;
+    color: #000;
 }
 
 .burger {
@@ -210,7 +235,6 @@ section {
     z-index: 2;
 }
 
-
 .section-header::before,
 .section-header::after {
     content: '';
@@ -227,6 +251,16 @@ section {
 
 .section-header::after {
     right: 0;
+}
+
+.light-theme {
+    background-color: #fff;
+    color: #000;
+}
+
+.light-theme::before,
+.light-theme::after {
+    background-color: #000;
 }
 
 .skills-items {
@@ -263,6 +297,7 @@ section {
 
 .portfolio-btns .btn-dark:hover {
     background-color: var(--main-color);
+    transition: 0.3s linear;
     color: #000;
 }
 
@@ -403,6 +438,7 @@ section {
     right: 20px;
     cursor: pointer;
     transition: 0.3s linear;
+    cursor: pointer;
 }
 
 .modal-close:hover {
@@ -518,8 +554,6 @@ section {
     .buger.open .burger-line {
         transition: 0.3s ease-in-out;
     }
-
-
 
     .burger.open .burger-line_first {
         transform: translate(0, 10px) rotate(45deg);
