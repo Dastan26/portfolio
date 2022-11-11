@@ -1,3 +1,5 @@
+import i18Obj from "./translate.js";
+
 const burger = document.querySelector('.burger');
 const navMenu = document.querySelector('.nav-menu');
 const navLink = document.querySelectorAll('.nav-menu__item-link');
@@ -70,7 +72,29 @@ function changeTheme() {
 themeBtn.addEventListener('click', changeTheme);
 
 
+function getTranslate(lang) {
+    const dataAtributes = document.querySelectorAll('[data-i18n]')
+    let langObj = i18Obj[lang];
 
+    dataAtributes.forEach((data) => {
+        let key = data.dataset.i18n;
+
+        for (let i in langObj) {
+            if (i == key) {
+                data.textContent = langObj[key];
+            }
+        }
+    })
+}
+
+
+function getLanguage(event) {
+    if (event.target.classList.contains('language')) {
+        getTranslate(event.target.textContent);
+    }
+}
+
+langParent.addEventListener('click', getLanguage);
 
 function closeModal() {
     modal.classList.remove('open');
